@@ -1323,7 +1323,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 if (location.hash === '#gallery' || location.hash === '#outside') showExtra(location.hash);
 
 
-/* Dinner photographs: advance every eight seconds while the gallery is visible. */
+/* Dinner photographs: advance every three seconds while the gallery is visible. */
 document.querySelectorAll('.dinner-gallery').forEach(gallery => {
   const track = gallery.querySelector('.dinner-track');
   const slides = [...gallery.querySelectorAll('.dinner-slide')];
@@ -1344,7 +1344,7 @@ document.querySelectorAll('.dinner-gallery').forEach(gallery => {
     if (!paused) timer = setInterval(() => {
       if (document.hidden || !gallery.getClientRects().length || gallery.matches(':hover') || gallery.contains(document.activeElement)) return;
       show(current + 1);
-    }, 8000);
+    }, 3000);
   }
   gallery.querySelector('[data-dinner-prev]').addEventListener('click', () => { show(current - 1, true); restart(); });
   gallery.querySelector('[data-dinner-next]').addEventListener('click', () => { show(current + 1, true); restart(); });
