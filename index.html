@@ -413,6 +413,19 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:
 .cited-figure figcaption{margin-top:.8rem;font-size:.85rem;line-height:1.5;color:var(--muted)}
 .cited-figure figcaption a{color:inherit;text-decoration-color:var(--line);text-underline-offset:3px}
 .cited-figure figcaption a:hover{color:var(--brass)}
+
+/* Slow group-dinner photo carousel. */
+.dinner-gallery{margin:0;max-width:960px}
+.dinner-viewport{overflow:hidden;border-radius:3px;background:var(--deep)}
+.dinner-track{display:flex;transition:transform 1.4s ease-in-out}
+.dinner-slide{flex:0 0 100%;min-width:0;aspect-ratio:3/2}
+.dinner-slide img{width:100%;height:100%;object-fit:contain}
+.dinner-gallery figcaption{margin-top:1rem;font-size:.9rem;line-height:1.5;color:var(--muted)}
+.dinner-controls{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin-top:1rem;font-size:.85rem;color:var(--muted)}
+.dinner-controls button{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+.dinner-controls button:hover{border-color:var(--brass)}
+.dinner-controls button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.dinner-track{transition:none}}
 </style>
 </head>
 <body>
@@ -1124,49 +1137,33 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:
       <button class="disc-toggle" aria-expanded="false" aria-controls="gallery-panel">
         <span>
           <span class="disc-title">Photo gallery</span>
-          <span class="disc-note">The lab, the instruments, and the conferences</span>
         </span>
         <span class="disc-mark" aria-hidden="true"></span>
       </button>
 
       <div class="disc-panel" id="gallery-panel" hidden>
-        <p class="intro">
-          A short caption for the set — where these were taken and what they show.
-          Six photographs is about right; beyond that it reads as an album rather
-          than a page.
-        </p>
-        <div class="gallery">
-          <figure>
-            <!-- <img src="assets/gallery-1.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph one</div>
-            <figcaption>Inside the cleanroom, or a device under the microscope.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/gallery-2.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph two</div>
-            <figcaption>An instrument you use every day.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/gallery-3.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph three</div>
-            <figcaption>A sample, a chip, or a capillary under illumination.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/gallery-4.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph four</div>
-            <figcaption>Presenting the poster at Faraday Discussions.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/gallery-5.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph five</div>
-            <figcaption>The group, or a collaborator visit.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/gallery-6.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph six</div>
-            <figcaption>A conference, a summer school, or a lab move.</figcaption>
-          </figure>
-        </div>
+        <figure class="dinner-gallery" aria-label="Group dinner photographs" aria-roledescription="carousel">
+          <div class="dinner-viewport">
+            <div class="dinner-track">
+              <div class="dinner-slide" role="group" aria-roledescription="slide" aria-label="1 of 3" aria-hidden="false">
+                <img src="Group%20dinner%201.jpg" alt="Angstrofluidics group dinner at Royal Nawab, 26 September 2026 — photograph 1" loading="lazy" decoding="async">
+              </div>
+              <div class="dinner-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+                <img src="Group%20dinner%202.jpg" alt="Angstrofluidics group dinner at Royal Nawab, 26 September 2026 — photograph 2" loading="lazy" decoding="async">
+              </div>
+              <div class="dinner-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+                <img src="Group%20dinner%203.jpg" alt="Angstrofluidics group dinner at Royal Nawab, 26 September 2026 — photograph 3" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+          <figcaption>26/09/2026: Angstrofluidics group dinner at Royal Nawab</figcaption>
+          <div class="dinner-controls">
+            <button type="button" data-dinner-prev aria-label="Previous photograph">&#8592;</button>
+            <span data-dinner-count aria-live="polite" aria-atomic="true">1 / 3</span>
+            <button type="button" data-dinner-next aria-label="Next photograph">&#8594;</button>
+            <button type="button" data-dinner-pause>Pause slideshow</button>
+          </div>
+        </figure>
       </div>
     </div>
 
@@ -1174,40 +1171,34 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:
       <button class="disc-toggle" aria-expanded="false" aria-controls="outside-panel">
         <span>
           <span class="disc-title">Outside the lab</span>
-          <span class="disc-note">The rest of it</span>
         </span>
         <span class="disc-mark" aria-hidden="true"></span>
       </button>
 
       <div class="disc-panel" id="outside-panel" hidden>
-        <!-- REWRITE THIS PARAGRAPH IN YOUR OWN WORDS -->
-        <p class="intro">
-          Replace this with two or three sentences about what you do when you are not
-          in the cleanroom — walking in the Peak District, photography, cricket, cooking,
-          travel, whatever it is. Keep it specific and keep it short.
-        </p>
-        <div class="gallery">
-          <figure>
-            <!-- <img src="assets/outside-1.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph one</div>
-            <figcaption>A one-line caption: where it was taken, or what is happening.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/outside-2.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph two</div>
-            <figcaption>Write captions like you are telling a friend.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/outside-3.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph three</div>
-            <figcaption>Four is plenty here.</figcaption>
-          </figure>
-          <figure>
-            <!-- <img src="assets/outside-4.jpg" alt="Describe the photograph"> -->
-            <div class="ph">Photograph four</div>
-            <figcaption>Compress each one to under 300 KB before uploading.</figcaption>
-          </figure>
-        </div>
+        <p class="intro">Outside the lab, I enjoy photography, travelling and exploring places on foot. Cricket is another interest of mine, alongside finding time to get outdoors and take a break from research.</p>
+        <figure class="dinner-gallery" aria-label="Group dinner photographs" aria-roledescription="carousel">
+          <div class="dinner-viewport">
+            <div class="dinner-track">
+              <div class="dinner-slide" role="group" aria-roledescription="slide" aria-label="1 of 3" aria-hidden="false">
+                <img src="Group%20dinner%201.jpg" alt="Angstrofluidics group dinner at Royal Nawab, 26 September 2026 — photograph 1" loading="lazy" decoding="async">
+              </div>
+              <div class="dinner-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+                <img src="Group%20dinner%202.jpg" alt="Angstrofluidics group dinner at Royal Nawab, 26 September 2026 — photograph 2" loading="lazy" decoding="async">
+              </div>
+              <div class="dinner-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+                <img src="Group%20dinner%203.jpg" alt="Angstrofluidics group dinner at Royal Nawab, 26 September 2026 — photograph 3" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+          <figcaption>26/09/2026: Angstrofluidics group dinner at Royal Nawab</figcaption>
+          <div class="dinner-controls">
+            <button type="button" data-dinner-prev aria-label="Previous photograph">&#8592;</button>
+            <span data-dinner-count aria-live="polite" aria-atomic="true">1 / 3</span>
+            <button type="button" data-dinner-next aria-label="Next photograph">&#8594;</button>
+            <button type="button" data-dinner-pause>Pause slideshow</button>
+          </div>
+        </figure>
       </div>
     </div>
   </div>
@@ -1330,6 +1321,37 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 if (location.hash === '#gallery' || location.hash === '#outside') showExtra(location.hash);
+
+
+/* Dinner photographs: advance every eight seconds while the gallery is visible. */
+document.querySelectorAll('.dinner-gallery').forEach(gallery => {
+  const track = gallery.querySelector('.dinner-track');
+  const slides = [...gallery.querySelectorAll('.dinner-slide')];
+  const count = gallery.querySelector('[data-dinner-count]');
+  const pause = gallery.querySelector('[data-dinner-pause]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0, paused = reducedMotion.matches, timer;
+  function show(index, manual = false) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    slides.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== current)));
+    count.setAttribute('aria-live', manual ? 'polite' : 'off');
+    count.textContent = `${current + 1} / ${slides.length}`;
+  }
+  function restart() {
+    clearInterval(timer);
+    pause.textContent = paused ? 'Play slideshow' : 'Pause slideshow';
+    if (!paused) timer = setInterval(() => {
+      if (document.hidden || !gallery.getClientRects().length || gallery.matches(':hover') || gallery.contains(document.activeElement)) return;
+      show(current + 1);
+    }, 8000);
+  }
+  gallery.querySelector('[data-dinner-prev]').addEventListener('click', () => { show(current - 1, true); restart(); });
+  gallery.querySelector('[data-dinner-next]').addEventListener('click', () => { show(current + 1, true); restart(); });
+  pause.addEventListener('click', () => { paused = !paused; restart(); });
+  reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; restart(); });
+  restart();
+});
 
 /* ---- news photo rotators ----------------------------------------------
    Each news item cycles through however many .slide blocks it contains.
